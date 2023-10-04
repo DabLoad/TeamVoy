@@ -28,7 +28,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/order/getList").hasRole("MANAGER")
                         .anyRequest().permitAll()
                 )
-                .httpBasic(withDefaults());
+                .httpBasic(withDefaults()).csrf().disable();
         return http.build();
     }
 
