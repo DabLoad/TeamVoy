@@ -23,8 +23,10 @@ public class GoodsController {
     }
 
     @PutMapping("/create")
-    public ResponseEntity<?> createGoods(@RequestBody Goods goods) {
-        return ResponseEntity.ok().body(goodsService.addGoods(goods));
+    public ResponseEntity<?> createGoods(@RequestParam String name,
+                                         @RequestParam Double price,
+                                         @RequestParam int quantity) {
+        return ResponseEntity.ok().body(goodsService.addGoods(name, price, quantity));
     }
 
     @DeleteMapping("/delete")

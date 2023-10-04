@@ -9,10 +9,18 @@ import java.util.List;
 
 @Service
 public class GoodsService {
-    @Autowired
-    private GoodsRepo goodsRepo;
+    private final GoodsRepo goodsRepo;
 
-    public Goods addGoods(Goods goods) {
+    @Autowired
+    public GoodsService(GoodsRepo goodsRepo) {
+        this.goodsRepo = goodsRepo;
+    }
+
+    public Goods addGoods(String name, Double price, int quantity) {
+        Goods goods = new Goods();
+        goods.setName(name);
+        goods.setPrice(price);
+        goods.setQuantity(quantity);
         goodsRepo.save(goods);
         return goods;
     }
