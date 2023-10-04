@@ -1,11 +1,10 @@
 package com.example.teamvoy.service;
 
-import com.example.teamvoy.dto.TinyGoods;
+import com.example.teamvoy.dto.TinyGoodsDto;
 import com.example.teamvoy.entity.Goods;
 import com.example.teamvoy.entity.Order;
 import com.example.teamvoy.repo.GoodsRepo;
 import com.example.teamvoy.repo.OrdersRepo;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class OrderService {
@@ -25,10 +23,10 @@ public class OrderService {
         this.goodsRepo = goodsRepo;
         this.ordersRepo = ordersRepo;
     }
-    public Order createOrder(TinyGoods[] goodsIdMap) {
+    public Order createOrder(TinyGoodsDto[] goodsIdMap) {
         Order order = new Order();
         List<Goods> goodsList = new ArrayList<>();
-        for (TinyGoods tinyGoods : goodsIdMap) {
+        for (TinyGoodsDto tinyGoods : goodsIdMap) {
             Goods goods = goodsRepo.findById(tinyGoods.getId()).get();
             goodsList.add(goods);
             goods.setQuantity(tinyGoods.getQuantity());

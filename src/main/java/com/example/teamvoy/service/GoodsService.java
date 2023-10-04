@@ -1,5 +1,6 @@
 package com.example.teamvoy.service;
 
+import com.example.teamvoy.dto.GoodsDto;
 import com.example.teamvoy.entity.Goods;
 import com.example.teamvoy.repo.GoodsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,11 @@ public class GoodsService {
         this.goodsRepo = goodsRepo;
     }
 
-    public Goods addGoods(String name, Double price, int quantity) {
+    public Goods addGoods(GoodsDto goodsDto) {
         Goods goods = new Goods();
-        goods.setName(name);
-        goods.setPrice(price);
-        goods.setQuantity(quantity);
+        goods.setName(goodsDto.getName());
+        goods.setPrice(goodsDto.getPrice());
+        goods.setQuantity(goodsDto.getQuantity());
         goodsRepo.save(goods);
         return goods;
     }

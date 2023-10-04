@@ -1,5 +1,6 @@
 package com.example.teamvoy.rest;
 
+import com.example.teamvoy.dto.GoodsDto;
 import com.example.teamvoy.entity.Goods;
 import com.example.teamvoy.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,8 @@ public class GoodsController {
     }
 
     @PutMapping("/create")
-    public ResponseEntity<?> createGoods(@RequestParam String name,
-                                         @RequestParam Double price,
-                                         @RequestParam int quantity) {
-        return ResponseEntity.ok().body(goodsService.addGoods(name, price, quantity));
+    public ResponseEntity<?> createGoods(@RequestBody GoodsDto goodsDto) {
+        return ResponseEntity.ok().body(goodsService.addGoods(goodsDto));
     }
 
     @DeleteMapping("/delete")

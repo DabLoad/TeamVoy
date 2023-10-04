@@ -3,7 +3,7 @@ package com.example.teamvoy.dto;
 import lombok.Data;
 
 @Data
-public class TinyGoods {
+public class TinyGoodsDto {
     Long id;
     int quantity;
 }

@@ -22,13 +22,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/api/v1/goods/create").hasRole("MANAGER")
                         .requestMatchers("/api/v1/goods/delete").hasRole("MANAGER")
                         .requestMatchers("/api/v1/order/getList").hasRole("MANAGER")
                         .anyRequest().permitAll()
                 )
-                .httpBasic(withDefaults()).csrf().disable();
+                .httpBasic(withDefaults());
         return http.build();
     }
 
