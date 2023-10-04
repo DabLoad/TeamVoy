@@ -61,20 +61,8 @@ public class OrderService {
     @Scheduled(fixedRate = 60000) // 1 minute
     public void cleanupOldOrders() {
         LocalDateTime tenMinutesAgo = LocalDateTime.now().minusMinutes(10);
-
-        // Логирование для отладки
-        System.out.println("Cleanup started at: " + LocalDateTime.now());
-        System.out.println("Looking for old unpaid orders...");
-
         List<Order> oldUnpaidOrders = ordersRepo.findOldUnpaidOrders(tenMinutesAgo);
-
-        // Логирование для отладки
-        System.out.println("Found " + oldUnpaidOrders.size() + " old unpaid orders.");
-
         ordersRepo.deleteAll(oldUnpaidOrders);
-
-        // Логирование для отладки
-        System.out.println("Old unpaid orders removed at: " + LocalDateTime.now());
     }
 
 }
