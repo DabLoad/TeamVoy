@@ -1,7 +1,6 @@
 package com.example.teamvoy.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;

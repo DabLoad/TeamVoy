@@ -1,7 +1,6 @@
 package com.example.teamvoy.rest;
 
 import com.example.teamvoy.dto.GoodsDto;
-import com.example.teamvoy.entity.Goods;
 import com.example.teamvoy.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
