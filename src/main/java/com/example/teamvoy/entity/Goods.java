@@ -12,6 +12,6 @@ public class Goods {
     @GeneratedValue
     private Long id;
     private String name;
-    private double price;
+    private int price;
     private int quantity;
 }
